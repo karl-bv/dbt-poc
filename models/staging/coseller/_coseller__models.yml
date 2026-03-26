@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_coseller__contacts
+    description: "Staged contacts with embedded types flattened"
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_coseller__companies
+    description: "Staged companies with embedded types flattened"
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_coseller__campaign_companies
+    description: "Staged campaign-company associations with embedded types flattened"
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_coseller__campaign_company_contacts
+    description: "Staged campaign-company-contact junction with embedded types flattened"
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null

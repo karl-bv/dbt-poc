@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: coseller_airbyte
+    description: "Raw Airbyte-synced tables from MongoDB staging cluster"
+    schema: bvcrmwapp_airbyte
+    tables:
+      - name: contacts
+        description: "Contact records synced from MongoDB contacts collection"
+        columns:
+          - name: _id
+            data_tests:
+              - not_null
+      - name: companies
+        description: "Company records synced from MongoDB companies collection"
+        columns:
+          - name: _id
+            data_tests:
+              - not_null
+      - name: campaign_companies
+        description: "Campaign-company associations synced from MongoDB"
+        columns:
+          - name: _id
+            data_tests:
+              - not_null
+      - name: campaign_company_contacts
+        description: "Campaign-company-contact junction records synced from MongoDB"
+        columns:
+          - name: _id
+            data_tests:
+              - not_null

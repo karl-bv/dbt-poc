@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: contacts
+    description: "Final contacts table — Prisma-compatible flat schema"
+    columns:
+      - name: id
+        data_tests:
+          - dbt_constraints.primary_key
+      - name: instance_id
+        data_tests:
+          - not_null
+
+  - name: companies
+    description: "Final companies table — Prisma-compatible flat schema"
+    columns:
+      - name: id
+        data_tests:
+          - dbt_constraints.primary_key
+      - name: instance_id
+        data_tests:
+          - not_null
+
+  - name: campaign_companies
+    description: "Final campaign-company associations — Prisma-compatible flat schema"
+    columns:
+      - name: id
+        data_tests:
+          - dbt_constraints.primary_key
+      - name: instance_id
+        data_tests:
+          - not_null
+      - name: company_id
+        data_tests:
+          - not_null
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('companies')
+              pk_column_name: id
+
+  - name: campaign_company_contacts
+    description: "Final campaign-company-contact junction — Prisma-compatible flat schema"
+    columns:
+      - name: id
+        data_tests:
+          - dbt_constraints.primary_key
+      - name: instance_id
+        data_tests:
+          - not_null
+      - name: contact_id
+        data_tests:
+          - not_null
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('contacts')
+              pk_column_name: id
+      - name: company_id
+        data_tests:
+          - not_null
+          - dbt_constraints.foreign_key:
+              pk_table_name: ref('companies')
+              pk_column_name: id
