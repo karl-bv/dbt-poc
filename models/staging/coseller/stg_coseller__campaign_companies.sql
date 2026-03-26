@@ -44,6 +44,16 @@ renamed as (
 
     from source
     where "_ab_cdc_deleted_at" is null
+),
+
+-- filter orphaned company references (5,263 rows / 0.42% of total)
+valid_refs as (
+    select r.*
+    from renamed r
+    where exists (
+        select 1 from {{ source('coseller_airbyte', 'companies') }} c
+        where c._id = r.company_id
+    )
 )
 
-select * from renamed
+select * from valid_refs
