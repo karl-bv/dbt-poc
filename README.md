@@ -211,8 +211,3 @@ dbt compile                # Preview compiled SQL without executing
 | Marts | `*_marts` | Tables with indexes + PK/FK constraints | Final Prisma-compatible shape |
 
 *Exact schema names depend on the dbt target/profile config (e.g., `public_staging`, `public_marts`).*
-
-## Related Docs
-
-- Migration Assessment: `coseller-mono/docs/POSTGRESQL_MIGRATION_ASSESSMENT.md`
-- POC Task Tracker: `coseller-mono/docs/task/TASK.md`
