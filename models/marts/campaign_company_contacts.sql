@@ -7,6 +7,7 @@
             {'columns': ['instance_id'], 'type': 'btree'},
             {'columns': ['campaign_id', 'company_id'], 'type': 'btree'},
             {'columns': ['company_id', 'contact_id'], 'type': 'btree'},
+            {'columns': ['instance_id', 'company_id', 'active', 'contact_id', 'campaign_id'], 'type': 'btree'},
         ]
     )
 }}
